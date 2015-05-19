@@ -1,0 +1,63 @@
+\documentclass[a4paper,onecolumn]{article}
+\usepackage{amsmath, amsthm, graphicx, amssymb, wrapfig, fullpage, subfigure, array}
+\usepackage[font=sl, labelfont={sf}, margin=1cm]{caption}
+\DeclareMathOperator{\e}{e}
+\begin{document}
+\setcounter{page}{1}
+
+\noindent This is a description about the content in the tar file.
+\section{2D Problem Description}
+For 2D TM wave, the equation for $\vec{E}$ is reduced to a scalar equation
+\begin{equation}
+    \nabla\cdot \left( \frac{1}{\mu_r} \nabla E_z \right) + k^2 \epsilon E_z = 0
+    \label{eq1}
+\end{equation}
+with appropriate boundary condition. Similar equation for $H_z$ holds for TE wave. We focus on \eqref{eq1}\\
+\subsection{Homogeneous Dirichlet boundary}
+For homogeneous Dirichlet boundary condition, this equation describes a resonance problem.
+Finite element discretization of \eqref{eq1} yields an algebraic general eigenvalue problem.
+\begin{equation}
+    Au = k^2 Bu
+\end{equation}
+from which we solve for the resonance modes $u$'s and resonance frequencies $k^2$.
+\subsection{Inhomogeneous Dirichlet boundary}
+The discretized equation is
+\begin{equation}
+    Cu = f
+\end{equation}
+We solve for the unique solution $u$.
+The codes can also solve for Neumann and Robin boundaries, though we do not show examples in the tar file.
+\section{Folder Circle}
+A circular geometry is chosen, with homogeneous Dirichlet boundary condition. This folder gives the mesh, resonant modes, and
+eigenvalues ($k^2$). For simplicity and verification both $\epsilon_r$ and $\mu_r$ are chosen to be constant. Notice all the numbers
+are non-dimensionalized.
+\section{Folder Complex}
+A more complex geometry.
+\subsection{Folder Geometry}
+As shown in antena\_bnd.png, this geometry has interior (red) and exterior (yellow) boundaries. It has 8704 elements.
+The relative magnetic permeability is a spatial varying field. The relative permettivity is assume a constant field, though
+a varying permettivity is also straightforward.
+\subsection{Folder Resonance}
+When a homogeneous Dirichlet boundary condition is applied to both interior and exterior boundaries, we solve for an eigenvalue problem.
+The pictures in each folder shows the corresponding eigen-mode: one for magnitude, another for phase angle (normalized by $\pi$).
+It is interesting that the first 6 eigen modes explores the vertical bars one by one. For example, the 1st and 2nd modes are both concentrated
+in the center vertical bar, while the 1st mode vibrates at the same phase angle up and down, and the 2nd mode vibrates at an opposite
+phase angle up and down.\\
+We also give an example of higher modes, mode 35.\\
+The eigenvalues, i.e. $k^2$ for the first 100 modes are plotted in eigmode.png.
+\subsection{Folder Driven}
+In this example the interior boundary is still homogeneous Dirichlet, but the exterior boundary is set to be $1$, i.e. uniformly
+driven by an exterior wave. The $k^2$ just corresponds to the exterior driven frequency. How would the electric field look like as we gradually
+increase the driven frequency? This is shown in the movie ($k^2$from 0 to 2000), only the magnitude is shown here.\\
+When $k^2=0$ it is a electrostatic problem, which corresponds to the very start of the movie.\\
+
+\end{document}
+
+
+
+
+
+
+
+
+

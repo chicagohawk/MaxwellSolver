@@ -1,0 +1,26 @@
+<pre class="code">
+<span class="srcline"><span class="lineno"><a href="1,1" id="srcline1"> 1</a></span><span class="line"><span class="comment">% all combinations that put n numbers into m bits</span></span></span>
+<span class="srcline"><span class="lineno"><a href="1,2" id="srcline2"> 2</a></span><span class="line"><span class="comment">%   e.g. n = 3, m = 3, returns</span></span></span>
+<span class="srcline"><span class="lineno"><a href="1,3" id="srcline3"> 3</a></span><span class="line"><span class="comment">%     003 300 030 102 012 201 111 021 210 120</span></span></span>
+<span class="srcline"><span class="lineno"><a href="1,4" id="srcline4"> 4</a></span><span class="line"><span class="keyword">function</span> <span class="var type0" id="S2T0U3">bits</span> = <span class="message error" id="M1F1C"><span class="message error" id="M2F1C">splitcodegen</span></span>(<span class="var type0" id="S3T0U6">n</span>, <span class="var type0" id="S4T0U7">m</span>)</span></span>
+<span class="srcline"><span class="lineno"><a href="1,5" id="srcline5"> 5</a></span><span class="line">    <span class="keyword">if</span> <span class="var type0" id="S3T0U11">n</span> == 0,</span></span>
+<span class="srcline"><span class="lineno"><a href="1,6" id="srcline6"> 6</a></span><span class="line">        <span class="var type0" id="S2T0U15">bits</span> = zeros(1,<span class="var type0" id="S4T0U19">m</span>);</span></span>
+<span class="srcline"><span class="lineno"><a href="1,7" id="srcline7"> 7</a></span><span class="line">        <span class="keyword">return</span>;</span></span>
+<span class="srcline"><span class="lineno"><a href="1,8" id="srcline8"> 8</a></span><span class="line">    <span class="keyword">end</span></span></span>
+<span class="srcline"><span class="lineno"><a href="1,9" id="srcline9"> 9</a></span><span class="line">    </span></span>
+<span class="srcline"><span class="lineno"><a href="1,10" id="srcline10">10</a></span><span class="line">    <span class="keyword">if</span> <span class="var type0" id="S4T0U24">m</span> == 1,</span></span>
+<span class="srcline"><span class="lineno"><a href="1,11" id="srcline11">11</a></span><span class="line">        <span class="var type0" id="S2T0U28">bits</span> = <span class="var type0" id="S3T0U29">n</span>;</span></span>
+<span class="srcline"><span class="lineno"><a href="1,12" id="srcline12">12</a></span><span class="line">        <span class="keyword">return</span>;</span></span>
+<span class="srcline"><span class="lineno"><a href="1,13" id="srcline13">13</a></span><span class="line">    <span class="keyword">end</span></span></span>
+<span class="srcline"><span class="lineno"><a href="1,14" id="srcline14">14</a></span><span class="line">    </span></span>
+<span class="srcline"><span class="lineno"><a href="1,15" id="srcline15">15</a></span><span class="line">    <span class="var type0" id="S2T0U33">bits</span> = [];</span></span>
+<span class="srcline"><span class="lineno"><a href="1,16" id="srcline16">16</a></span><span class="line">    <span class="keyword">for</span> <span class="var type0" id="S6T0U38">ii</span> = 0 : <span class="var type0" id="S3T0U41">n</span>,    <span class="comment">% number put in first bit</span></span></span>
+<span class="srcline"><span class="lineno"><a href="1,17" id="srcline17">17</a></span><span class="line">        <span class="var type0" id="S7T0U44">subcode</span> = codegen(<span class="var type0" id="S3T0U48">n</span>-<span class="var type0" id="S6T0U49">ii</span>, <span class="var type0" id="S4T0U51">m</span>-1);</span></span>
+<span class="srcline"><span class="lineno"><a href="1,18" id="srcline18">18</a></span><span class="line">        <span class="var type0" id="S9T0U55">num</span> = size(<span class="var type0" id="S7T0U58">subcode</span>,1);</span></span>
+<span class="srcline"><span class="lineno"><a href="1,19" id="srcline19">19</a></span><span class="line">        <span class="var type0" id="S11T0U62">combcode</span> = [<span class="var type0" id="S6T0U66">ii</span> * ones(<span class="var type0" id="S9T0U69">num</span>,1), <span class="var type0" id="S7T0U71">subcode</span>];</span></span>
+<span class="srcline"><span class="lineno"><a href="1,20" id="srcline20">20</a></span><span class="line">        <span class="var type0" id="S2T0U74">bits</span> = [<span class="var type0" id="S2T0U77">bits</span>; <span class="var type0" id="S11T0U79">combcode</span>];</span></span>
+<span class="srcline"><span class="lineno"><a href="1,21" id="srcline21">21</a></span><span class="line">    <span class="keyword">end</span></span></span>
+<span class="srcline"><span class="lineno"><a href="1,22" id="srcline22">22</a></span><span class="line">    </span></span>
+<span class="srcline"><span class="lineno"><a href="1,23" id="srcline23">23</a></span><span class="line">    <span class="keyword">return</span>;</span></span>
+<span class="srcline"><span class="lineno"><a href="1,24" id="srcline24">24</a></span><span class="line"><span class="keyword">end</span></span></span>
+</pre>

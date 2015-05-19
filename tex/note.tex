@@ -1,0 +1,119 @@
+\documentclass[a4paper,onecolumn]{article}
+\usepackage{amsmath, amsthm, graphicx, amssymb, wrapfig, fullpage, subfigure, array}
+\usepackage[font=sl, labelfont={sf}, margin=1cm]{caption}
+\DeclareMathOperator{\e}{e}
+\begin{document}
+\setcounter{page}{1}
+
+\section{Problem Statement}
+Spaces
+\begin{equation*}\begin{split}
+    X^D &= \{v\in H^1(\Omega) \;\bigl.\bigr|\; v|_{\partial \Omega^D} = u^D\}\\
+    X &= \{v\in H^1(\Omega) \;\bigl.\bigr|\; v|_{\partial \Omega^D} = 0\}
+\end{split}\end{equation*}
+Notation
+\begin{equation*}\begin{split}
+    A_e^R &= \partial\Omega^R \cap A_e\\
+    A_e^N &= \partial\Omega^N \cap A_e
+\end{split}\end{equation*}
+Solution space
+$$
+    u\in X^D
+$$
+Test space
+$$
+    v\in X
+$$
+Equation
+\begin{equation*}
+    \nabla \cdot (a \nabla u) + k^2 u = s
+\end{equation*}
+with 3 kinds of boundary conditions (Dirichlet, Neumann, Robin)
+\begin{equation*}\begin{split}
+    u\bigl.\bigr|_{\partial \Omega^D} &= u^D\\
+    \hat{n} \cdot \nabla u \bigl.\bigr|_{\partial \Omega^N}&= f\\
+    \Bigr(\gamma u + \frac{\partial u}{\partial \hat{n}} \Bigr)\Bigl.\Bigr|_{\partial \Omega^R}&= g
+\end{split}\end{equation*}
+Weak form
+\begin{equation*}
+    -\int_\Omega a \nabla u \cdot \nabla v + \int_\Omega k^2 u v 
+    -\int_{\partial \Omega^R} \gamma a u v =  \int_\Omega s v
+    - \int_{\partial \Omega^R} ag v
+    - \int_{\partial \Omega^N} af v
+\end{equation*}
+Proceed as $u^D = 0$, i.e. homogeneous Dirichlet, and use explicit elimination in the last step.\\
+Assume $\,f, \,g,\, u^D, \,s, \,a,\,\gamma$ elemental / piecewise constant.\\
+
+\noindent Elemental contribution ($A_e$)
+\begin{itemize}
+    \item Bilinear matrix
+    \begin{equation*}
+        -\int_{A_e}  a \Bigl( J^{-T} \nabla_L L_i \Bigr)^T \cdot \Bigl(J^{-T}\nabla_L L_j\Bigr)
+        + \int_{A_e} k^2 L_i L_j - \int_{A_e^R} \gamma a L_i L_j
+    \end{equation*}
+    \item Load vector
+    \begin{equation*}
+        \int_{A_e} s L_i - \int_{A_e^R} a g L_i - \int_{A_e^N} a f L_i
+    \end{equation*}
+\end{itemize}
+In which,
+\begin{equation}
+(J^T)^{-1}=\frac{1}{2A_e}
+\begin{pmatrix}
+y_2-y_3 & -y_1+y_3\\
+\\
+-x_2+x_3 & x_1-x_3
+\end{pmatrix}
+\end{equation}
+\begin{equation}
+\nabla_L \vec{L}=
+\begin{pmatrix}
+1 & 0 & -1\\
+\\
+0 & 1 & -1
+\end{pmatrix}
+\end{equation}
+\begin{equation}\begin{split}
+\int_{A_e}\! L_1^a\, L_2^b\, L_3^c&=a!\,b!\,c!\,\frac{2A_e}{(a+b+c+2)\,!}
+\end{split}\end{equation}
+\noindent For a boundary edge of length $L$, let $i,\,j$ denote the nodal basis index on the edge.
+\begin{equation*}\begin{split}
+    \int_e L_i L_j &= \frac{L}{6}(1+\delta_{ij})\\
+    \int_e L_i &= \frac{L}{2}
+\end{split}\end{equation*}
+Explicit elimination. Denote $\{I^D\}$ as the nodal indices on $\partial \Omega^D$
+\begin{itemize}
+    \item Remove $\{I^D\}$ rows of the equation
+    \item Load vector
+          $$
+              F = F - M{\{:,I^D\}} \cdot u^{D}
+          $$
+    \item Remove $\{I^D\}$ columns of the bilinear matrix
+\end{itemize}
+Finally, solve
+$$
+    Mu = F
+$$
+For the general eigenvalue problem,
+$$
+    A_1 u = \lambda A_2 u
+$$
+we have
+$$
+    A u \;\rightarrow\; A(\neg I^D, \neg I^D) u(\neg I^D) + A(\neg I^D, I^D) u(I^D) \equiv \bar{A}\bar{u}+f
+$$
+Thus the general eigenvalue problem reduces to
+$$
+    \left( \bar{A}_1 - \bar{A}_2 \right) \bar{u} = f_2 - f_1
+$$
+The solution can be unique for non-homogeneous Dirichlet boundary conditions.
+
+\end{document}
+
+
+
+
+
+
+
+

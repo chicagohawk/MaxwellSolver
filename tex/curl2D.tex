@@ -1,0 +1,99 @@
+\documentclass[a4paper,onecolumn]{article}
+\usepackage{amsmath, amsthm, graphicx, amssymb, wrapfig, fullpage, subfigure, array}
+\usepackage[font=sl, labelfont={sf}, margin=1cm]{caption}
+\DeclareMathOperator{\e}{e}
+\begin{document}
+\setcounter{page}{1}
+
+\section{Compute $\nabla\times$ of $\Gamma$ Basis, 2D Zero-th Order}
+$\Gamma$ basis vector $i$ (total 3)
+$$
+    \frac{1}{\Delta} \hat{N}^T L \Gamma_i
+$$
+The curl is
+\begin{equation*}\begin{split}
+    & \nabla \times (\frac{1}{\Delta} \hat{N}^T L \Gamma_i) =
+    \hat{z} 
+    \begin{pmatrix}
+         0 &-\partial_y &\partial_x
+     \end{pmatrix} (\frac{1}{\Delta} \hat{N}^T L \Gamma_i)\\
+    = & - \hat{z} 
+     \begin{pmatrix}
+         0 &-\partial_y &\partial_x
+     \end{pmatrix} (\frac{1}{\Delta} \hat{X}^T F^{-T} \Gamma_i)
+\end{split}\end{equation*}
+where
+$$
+    F^{-T} \Gamma =
+    \begin{pmatrix}
+        a_1 & a_2 & a_3\\
+        b_1 & b_2 & b_3\\
+        c_1 & c_2 & c_3 
+    \end{pmatrix}
+    \begin{pmatrix}
+        0 & \zeta_3 &-\zeta_2\\
+        -\zeta_3 & 0 & \zeta_1\\
+        \zeta_2 & -\zeta_1 & 0
+    \end{pmatrix}
+    = \begin{pmatrix}
+        -a_2 \zeta_3 + a_3 \zeta_2 & a_1 \zeta_3 - a_3 \zeta_1 & - a_1 \zeta_2 + a_2 \zeta_1\\
+        - b_2 \zeta_3 + b_3 \zeta_2 & b_1 \zeta_3 - b_3 \zeta_1 & - b_1 \zeta_2 + b_2 \zeta_1 \\
+        -c_2 \zeta_3 + c_3 \zeta_2 & c_1 \zeta_3 - c_3 \zeta_1 & - c_1 \zeta_2 + c_2\zeta_1
+    \end{pmatrix}
+$$
+Also
+$$
+    \nabla \zeta_i = - \frac{\hat{n_i}l_i}{\Delta}
+$$
+where $\Delta$ is twice the triangle area.
+The curl for the 3 $\Gamma$ basis vectors are
+$$
+    \nabla\times_1 = \frac{\hat{z}}{\Delta^2} (b_2 l_3 \hat{n}_{3y} - b_3 l_2 \hat{n}_{2y}
+    -c_2 l_3 n_{3x} + c_3 l_2 n_{2x})
+$$
+$$
+    \nabla\times_2 = \frac{\hat{z}}{\Delta^2} (-b_1 l_3 \hat{n}_{3y} + b_3 l_1 \hat{n}_{1y}
+    +c_1 l_3 n_{3x} - c_3 l_1 n_{1x})
+$$
+$$
+    \nabla\times_3 = \frac{\hat{z}}{\Delta^2} (b_1 l_2 \hat{n}_{2y} - b_2 l_1 \hat{n}_{1y}
+    -c_1 l_2 n_{2x} + c_2 l_1 n_{1x})
+$$
+\section{Compute $\nabla \cdot$ of $\Gamma$ Basis}
+The div is
+\begin{equation*}
+    \nabla \cdot (\frac{1}{\Delta} \hat{N}^T L \Gamma_i) 
+    = \begin{pmatrix}
+         0 &\partial_x &\partial_y
+     \end{pmatrix} (\frac{1}{\Delta} \hat{X}^T F^{-T} \Gamma_i)
+\end{equation*}
+The div for the 3 $\Gamma$ basis vectors are
+$$
+    \nabla \cdot _1 = \frac{1}{\Delta^2} (b_2 l_3 \hat{n}_{3x}
+                                        - b_3 l_2 \hat{n}_{2x}
+                                        + c_2 l_3 \hat{n}_{3y}
+                                        - c_3 l_2 \hat{n}_{2y} )
+$$
+$$
+    \nabla \cdot _2 = \frac{1}{\Delta^2} (-b_1 l_3 \hat{n}_{3x}
+                                        + b_3 l_1 \hat{n}_{1x}
+                                        - c_1 l_3 \hat{n}_{3y}
+                                        + c_3 l_1 \hat{n}_{1y} )
+$$
+$$
+    \nabla \cdot _3 = \frac{1}{\Delta^2} (b_1 l_2 \hat{n}_{2x}
+                                        - b_2 l_1 \hat{n}_{1x}
+                                        + c_1 l_2 \hat{n}_{2y}
+                                        - c_2 l_1 \hat{n}_{1y} )
+$$
+
+
+\end{document}
+
+
+
+
+
+
+
+
